@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+@component('mail::message')
+    
+# A heading
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
 
-<body>
-    <h1> It Works Again! </h1>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ut commodi nostrum iusto quia 
+dolores quibusdam perspiciatis quas?
 
-    <p> It sounds like you want to hear more about {{ $topic }} .</p>
 
-</body>
+- A List
+- goes on 
+- here
 
-</html>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ut commodi nostrum iusto quia 
+dolores quibusdam perspiciatis quas?
+
+@component('mail::button', ['url' => 'https://laracasts.com']) 
+Visit Laracasts :D
+@endcomponent
+
+
+
+@endcomponent

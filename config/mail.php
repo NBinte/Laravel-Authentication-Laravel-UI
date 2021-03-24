@@ -100,7 +100,9 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+        // 'theme' => 'default',
+
+        'theme' => 'laracasts',
 
         'paths' => [
             resource_path('views/vendor/mail'),
