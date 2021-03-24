@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function show(){
+    public function show()
+    {
         return view('Contact');
     }
 
-    public function store(){
+    public function store()
+    {
 
         //send the email
 
@@ -21,19 +24,26 @@ class ContactController extends Controller
 
         // dd($email);
 
-        Mail::raw('It Works!', function ($message) {
-            //$message->from('john@johndoe.com', 'John Doe');
-            //$message->sender('john@johndoe.com', 'John Doe');
-            //$message->to('john@johndoe.com', 'John Doe');
-            $message->to(request('email'))
-                ->subject('Hello There');
-            //$message->cc('john@johndoe.com', 'John Doe');
-            //$message->bcc('john@johndoe.com', 'John Doe');
-            //$message->replyTo('john@johndoe.com', 'John Doe');
-            //$message->subject('Subject');
-            //$message->priority(3);
-            //$message->attach('pathToFile');
-        });
+        // Mail::raw('It Works!', function ($message) {
+        //     //$message->from('john@johndoe.com', 'John Doe');
+        //     //$message->sender('john@johndoe.com', 'John Doe');
+        //     //$message->to('john@johndoe.com', 'John Doe');
+        //     $message->to(request('email'))
+        //         ->subject('Hello There');
+        //     //$message->cc('john@johndoe.com', 'John Doe');
+        //     //$message->bcc('john@johndoe.com', 'John Doe');
+        //     //$message->replyTo('john@johndoe.com', 'John Doe');
+        //     //$message->subject('Subject');
+        //     //$message->priority(3);
+        //     //$message->attach('pathToFile');
+        // }); //useful for plain text emails
+
+
+        //for html driven email
+
+        Mail::to(request('email'))
+            ->send(new ContactMe('shirts'));
+
 
 
         //a flash message is basically the data that is put at the session for exactly one request
