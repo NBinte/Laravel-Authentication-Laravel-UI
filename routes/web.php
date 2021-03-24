@@ -29,6 +29,13 @@ Route::post('/contact', 'App\Http\Controllers\ContactController@store');
 //     return 'You are now logged out';
 // });
 
+Route::get('payments/create', 'App\Http\Controllers\PaymentController@create')
+    ->middleware('auth');
+
+
+Route::post('payments', 'App\Http\Controllers\PaymentController@store')
+    ->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
