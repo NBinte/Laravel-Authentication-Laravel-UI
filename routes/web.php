@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 
+Route::get('/contact', 'App\Http\Controllers\ContactController@show');
+
+Route::post('/contact', 'App\Http\Controllers\ContactController@store');
+
 // Route::get('/logout', function () {
 
 //     auth()->logout();
