@@ -18,15 +18,15 @@ use Illuminate\Notifications\Notification;
 class PaymentReceived extends Notification
 {
     use Queueable;
-
+    protected $amount;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($amount)
     {
-        //
+        $this->amount = $amount;
     }
 
     //you could have one notification that is distributed to the user in multiple ways
@@ -40,7 +40,9 @@ class PaymentReceived extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        // return ['mail'];
+
+        return ['mail', 'database']; //store notifications in db and send as mail
     }
 
     /**
@@ -52,12 +54,12 @@ class PaymentReceived extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Your laracasts payment was received')
-                    ->greeting('BEEP BEEP BOOP BOOP')
-                    ->line('Lorem Ipsum Sit Lorem Ipsum Sit Lorem Ipsum Sit')
-                    ->line('The introduction to the notification.')
-                    ->action('Sign Up', url('/'))
-                    ->line('Thanks!');
+            ->subject('Your laracasts payment was received')
+            ->greeting('BEEP BEEP BOOP BOOP')
+            ->line('Lorem Ipsum Sit Lorem Ipsum Sit Lorem Ipsum Sit')
+            ->line('The introduction to the notification.')
+            ->action('Sign Up', url('/'))
+            ->line('Thanks!');
     }
 
     /**
@@ -68,8 +70,11 @@ class PaymentReceived extends Notification
      */
     public function toArray($notifiable)
     {
+
+        // $model->toArray() //in case we have a model
+
         return [
-            //
+            'amount' => $this->amount
         ];
     }
 }
