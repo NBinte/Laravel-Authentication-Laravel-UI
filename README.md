@@ -1,5 +1,11 @@
 Authentication - Build a Registration System in mere minutes, Password Reset Flow
 
+CSRF Attacks with Example
+
+Mail - Send Raw Mail, Simulate an Inbox using Mailtrap, Send HTML Emails Using Mailable Classes, Send Email Using Markdown Templates, Notifications VS Mailables
+
+Notifications - Database Notifications
+
 
 
 
