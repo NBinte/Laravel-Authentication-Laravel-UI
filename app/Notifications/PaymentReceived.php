@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\NexmoMessage;
 
 
 //responsible for notifying the user in response to some action that took place on the website
@@ -42,7 +43,7 @@ class PaymentReceived extends Notification
     {
         // return ['mail'];
 
-        return ['mail', 'database']; //store notifications in db and send as mail
+        return ['mail', 'database', 'nexmo']; //store notifications in db and send as mail
     }
 
     /**
@@ -61,6 +62,22 @@ class PaymentReceived extends Notification
             ->action('Sign Up', url('/'))
             ->line('Thanks!');
     }
+
+
+    /**
+     * Get the Vonage / SMS representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\NexmoMessage
+     */
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage)
+            ->content('Your Laracasts payment has been processed!');
+            //->from();
+    }
+
+
 
     /**
      * Get the array representation of the notification.
