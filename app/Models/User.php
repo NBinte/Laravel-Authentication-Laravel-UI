@@ -48,4 +48,15 @@ class User extends Authenticatable
         return ''; //add USER number
     }
 
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class, 'conversation_id'); 
+    }
+
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class); 
+    }
+
 }
