@@ -38,5 +38,14 @@ class AuthServiceProvider extends ServiceProvider
         //     return $conversation->user->is($user); // if the conversation owner is the current user, then you are 
         //     //authorized to mark best reply
         // });
+
+
+        Gate::before(function (User $user) { //global before hook
+
+
+            if ($user->id == 47) { //admin
+                return true;
+            }
+        });
     }
 }

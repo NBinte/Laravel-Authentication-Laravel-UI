@@ -50,6 +50,22 @@ class ConversationPolicy
     //     //
     // }
 
+
+    // public function before(User $user){ //policy specific authorization hook
+
+    //     if($user->id == 47){ //admin
+
+    //         return true;
+
+    //     } //use conditionals like this, don't directly return anything or it will ruin the flow
+
+    //     //return $user->id == 46; //result of this will be considered as result of the policy and the
+    //     //actual authorization method will never be called
+    // }
+
+
+
+
     /**
      * Determine whether the user can update the model.
      *
@@ -59,8 +75,10 @@ class ConversationPolicy
      */
 
     //determine whether the user can update the conversation
-    public function update(User $user, Conversation $conversation)
+    public function update(User $user, Conversation $conversation) //ability method
     {
+        ///ddd('hello');
+
         return $conversation->user->is($user);
     }
 
