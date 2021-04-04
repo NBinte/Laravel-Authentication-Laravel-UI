@@ -40,10 +40,18 @@ class AuthServiceProvider extends ServiceProvider
         // });
 
 
-        Gate::before(function (User $user) { //global before hook
+        // Gate::before(function (User $user) { //global before hook
 
 
-            if ($user->id == 47) { //admin
+        //     if ($user->id == 47) { //admin
+        //         return true;
+        //     }
+        // });
+
+
+        Gate::before(function ($user, $ability) { //global before hook
+
+            if ($user->abilities()->contains($ability)) {
                 return true;
             }
         });

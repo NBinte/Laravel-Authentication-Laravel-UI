@@ -18,6 +18,17 @@ Route::get('/', function () {
 });
 
 
+// Route::get('/', function () {
+//     return view('welcome1');
+// });
+
+
+Route::get('/reports', function () {
+    return 'The secret reports';
+})->middleware('can:view_reports'); //locking the endpoint down
+
+
+
 Route::get('/contact', 'App\Http\Controllers\ContactController@show');
 
 Route::post('/contact', 'App\Http\Controllers\ContactController@store');
@@ -59,3 +70,14 @@ Route::post('best-replies/{reply}', 'App\Http\Controllers\ConversationBestReplyC
 
 
 Auth::routes();
+
+
+//users
+
+//John => moderator, Sally => manager, Frank => owner
+
+//moderator => 'edit_forum'
+
+//owner => 'view_financial_reports'
+
+

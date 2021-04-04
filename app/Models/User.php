@@ -50,13 +50,48 @@ class User extends Authenticatable
 
     public function conversations()
     {
-        return $this->hasMany(Conversation::class, 'conversation_id'); 
+        return $this->hasMany(Conversation::class, 'conversation_id');
     }
 
 
     public function replies()
     {
-        return $this->hasMany(Reply::class); 
+        return $this->hasMany(Reply::class);
     }
 
+
+    public function roles()
+    {
+
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+
+    public function assignRole($role)
+    {
+        // $this->roles()->save($role);
+
+        if (is_string($role)) {
+            $role = Role::whereName($role)->firstOrFail();
+        }
+
+
+        $this->roles()->sync($role, false); //will replace all of the existing records in the pivot table 
+        //with this collection and anything that is not included in this collection but is in the DB, will be 
+        //dropped, used false here for not dropping
+
+        //will add any new records if necessary but it won't drop anything
+    }
+
+
+    public function abilities()
+    { //not an eloquent relationship, need to call like a standard method
+        return $this->roles->map->abilities->flatten()->pluck('name')->unique();
+    }
 }
+
+//$user->roles
+
+//$user->roles()->save($role)
+
+//$user->assignRole()
