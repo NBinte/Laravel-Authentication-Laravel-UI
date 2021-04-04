@@ -16,6 +16,9 @@ class ConversationController extends Controller
 
     public function show(Conversation $conversation)
     {
+
+        //$this->authorize('view', $conversation); //for authorizing a conversation before we can show it
+
         return view('conversations.show', [
             'conversation' => $conversation
         ]);

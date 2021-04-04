@@ -50,7 +50,10 @@ Route::get('notifications', 'App\Http\Controllers\UserNotificationController@sho
 
 Route::get('conversations', 'App\Http\Controllers\ConversationController@index');
 
-Route::get('conversations/{conversation}', 'App\Http\Controllers\ConversationController@show');
+// Route::get('conversations/{conversation}', 'App\Http\Controllers\ConversationController@show');
+
+Route::get('conversations/{conversation}', 'App\Http\Controllers\ConversationController@show')
+    ->middleware('can:view,conversation'); //authorization on route level
 
 Route::post('best-replies/{reply}', 'App\Http\Controllers\ConversationBestReplyController@store');
 

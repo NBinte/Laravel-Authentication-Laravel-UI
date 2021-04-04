@@ -22,7 +22,7 @@ class ConversationBestReplyController extends Controller
 
 
 
-        $this->authorize('update', $reply->conversation);
+        $this->authorize('update', $reply->conversation); //ability name and the associated model
 
         // then set it
 

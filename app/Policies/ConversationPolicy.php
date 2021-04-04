@@ -27,17 +27,17 @@ class ConversationPolicy
     //     //
     // }
 
-    // /**
-    //  * Determine whether the user can view the model.
-    //  *
-    //  * @param  \App\Models\User  $user
-    //  * @param  \App\Models\Conversation  $conversation
-    //  * @return mixed
-    //  */
-    // public function view(User $user, Conversation $conversation)
-    // {
-    //     //
-    // }
+    /**
+     * Determine whether the user can view the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Conversation  $conversation
+     * @return mixed
+     */
+    public function view(User $user, Conversation $conversation)
+    {
+        return $conversation->user->is($user);
+    }
 
     // /**
     //  * Determine whether the user can create models.
