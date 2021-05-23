@@ -4,9 +4,24 @@ CSRF Attacks with Example
 
 Mail - Send Raw Mail, Simulate an Inbox using Mailtrap, Send HTML Emails Using Mailable Classes, Send Email Using Markdown Templates, Notifications VS Mailables
 
-Notifications - Database Notifications
+Notifications - Database Notifications, SMS Notifications
+
+Events
+
+Authorization - Limit Access to Authorized Users, Authorization Filters, Guessing the Ability Name, Middleware Based Authorization, Roles and Abilities
 
 
+Run Following -
+
+1. composer install
+
+2. npm install
+
+3. npm run dev
+
+4. Create .env file, insert DB name and pass
+
+5. Run php artisan key:generate
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
