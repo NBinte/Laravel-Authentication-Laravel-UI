@@ -12,7 +12,7 @@
                     {{-- {{ $notification->type }} --}}
 
                     @if ($notification->type == 'App\Notifications\PaymentReceived')
-                        We havre received a payment of ${{ $notification->data['amount'] / 100 }} from you.
+                        We have received a payment of ${{ $notification->data['amount'] / 100 }} from you.
                     @endif
 
                 </li>
